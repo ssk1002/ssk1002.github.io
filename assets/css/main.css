@@ -3565,25 +3565,27 @@ input, select, textarea {
 				width: 18em;
 			}
 
+			#banner .content .image img {
+				border-radius: 100%;
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+				position: relative;
+			}
+
+			@media (max-width: 479px) {
 				#banner .content .image img {
-					/* border-radius: 100%; */
-					display: block;
-					width: 100%;
-					top: -25px;
-					position: relative;
+					object-position: center;
 				}
+			}
 
-				@media (max-width: 479px) {
-					#banner .content .image img {
-						top: -10px;
-					}
+			@media (max-width: 1024px) and (min-width: 480px) {
+				#banner .content .image img {
+					object-position: center;
 				}
-
-				@media (max-width: 1024px) and (min-width: 480px) {
-					#banner .content .image img {
-						top: -15px;
-					}
-				}
+			}
 
 	body.is-touch #banner {
 		background-attachment: scroll;
