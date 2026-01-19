@@ -390,6 +390,14 @@
             letter-spacing: -0.02em;
         }
 
+        .section-tip {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            font-style: italic;
+            opacity: 0.7;
+        }
+
         /* Bento Grid */
         .bento-grid {
             display: grid;
@@ -559,6 +567,9 @@
         /* Experience Timeline */
         .experience {
             background: var(--bg-card);
+            overflow: visible;
+            position: relative;
+            z-index: 1;
         }
 
         .timeline {
@@ -651,7 +662,8 @@
         .athletic {
             background: var(--bg);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+            z-index: 10;
         }
 
         .athletic::before {
@@ -668,8 +680,11 @@
 
         .athletic-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 1.5rem;
+            overflow: visible;
+            padding-top: 400px;
+            margin-top: -400px;
         }
 
         .athletic-card {
@@ -680,7 +695,7 @@
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .athletic-card::before {
@@ -697,6 +712,35 @@
 
         .athletic-card:hover::before {
             transform: scaleX(1);
+        }
+
+        .athletic-card .hover-image {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--border);
+            background: var(--bg-card);
+        }
+
+        .athletic-card .hover-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .athletic-card:hover .hover-image {
+            opacity: 1;
+            transform: translateX(-50%) scale(1) translateY(-10px);
         }
 
         .athletic-card:hover {
@@ -1525,7 +1569,7 @@
                                 <h3>J.P. Morgan Chase</h3>
                                 <h4>Software Engineering Intern</h4>
                             </div>
-                            <span class="timeline-date">Summer 2017</span>
+                            <span class="timeline-date">2017</span>
                         </div>
                         <p>Built policy decision microservices for entitlement management using ABAC.
                            Presented to JPMC Security Council on internal security solutions.</p>
@@ -1554,31 +1598,43 @@
             <div class="section-header fade-up">
                 <span class="section-label">Beyond Code</span>
                 <h2 class="section-title">Miles & Mindset</h2>
+                <p class="section-tip">Hover over cards to see photos</p>
             </div>
             <div class="athletic-grid">
                 <div class="athletic-card fade-up">
+                    <div class="hover-image"><img src="images/full-marathon.jpg" alt="Marathon"></div>
                     <div class="athletic-icon"><i class="fas fa-person-running"></i></div>
                     <div class="athletic-number">2</div>
                     <div class="athletic-label">Full Marathons</div>
                     <div class="athletic-detail">26.2 miles of determination</div>
                 </div>
                 <div class="athletic-card fade-up">
+                    <div class="hover-image"><img src="images/half-marathon.jpg" alt="Half Marathon"></div>
                     <div class="athletic-icon"><i class="fas fa-medal"></i></div>
                     <div class="athletic-number">9</div>
                     <div class="athletic-label">Half Marathons</div>
                     <div class="athletic-detail">13.1 miles of grit</div>
                 </div>
                 <div class="athletic-card fade-up">
+                    <div class="hover-image"><img src="images/five-boro.jpg" alt="Five Boro Bike Tour"></div>
                     <div class="athletic-icon"><i class="fas fa-bicycle"></i></div>
                     <div class="athletic-number">5</div>
                     <div class="athletic-label">Five Boro Bike Tours</div>
                     <div class="athletic-detail">50+ miles through NYC</div>
                 </div>
                 <div class="athletic-card fade-up">
+                    <div class="hover-image"><img src="images/spartan.jpg" alt="Spartan Race"></div>
                     <div class="athletic-icon"><i class="fas fa-fire"></i></div>
                     <div class="athletic-number">6</div>
                     <div class="athletic-label">Spartan Races</div>
                     <div class="athletic-detail">Spartan Trifecta (Sprint, Super, Beast) finisher</div>
+                </div>
+                <div class="athletic-card fade-up">
+                    <div class="hover-image"><img src="images/kilimanjaro.jpg" alt="Mt. Kilimanjaro"></div>
+                    <div class="athletic-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="athletic-number">2</div>
+                    <div class="athletic-label">Summit Climbs</div>
+                    <div class="athletic-detail">Mt. Kilimanjaro & Half Dome</div>
                 </div>
             </div>
         </div>
@@ -1596,42 +1652,42 @@
                     <div class="award-icon"><i class="fas fa-trophy"></i></div>
                     <div class="award-content">
                         <h4>Prime Video Hackathon Winner</h4>
-                        <p>Amazon, 2022</p>
+                        <p>Amazon</p>
                     </div>
                 </div>
                 <div class="award-card fade-up">
                     <div class="award-icon"><i class="fas fa-trophy"></i></div>
                     <div class="award-content">
                         <h4>Prime Video Hackathon Winner</h4>
-                        <p>Amazon, 2021</p>
+                        <p>Amazon</p>
                     </div>
                 </div>
                 <div class="award-card fade-up">
                     <div class="award-icon"><i class="fas fa-trophy"></i></div>
                     <div class="award-content">
                         <h4>Global Hackathon Winner</h4>
-                        <p>Goldman Sachs, 2018</p>
+                        <p>Goldman Sachs</p>
                     </div>
                 </div>
                 <div class="award-card fade-up">
                     <div class="award-icon"><i class="fas fa-trophy"></i></div>
                     <div class="award-content">
                         <h4>Americas Datathon Top 5</h4>
-                        <p>Goldman Sachs, 2020</p>
+                        <p>Goldman Sachs</p>
                     </div>
                 </div>
                 <div class="award-card fade-up">
                     <div class="award-icon"><i class="fas fa-trophy"></i></div>
                     <div class="award-content">
                         <h4>Best Android Hack</h4>
-                        <p>HackNYU, 2017</p>
+                        <p>HackNYU</p>
                     </div>
                 </div>
                 <div class="award-card fade-up">
                     <div class="award-icon"><i class="fas fa-trophy"></i></div>
                     <div class="award-content">
                         <h4>Best Software Hack</h4>
-                        <p>WearHacks NY, 2015</p>
+                        <p>WearHacks NY</p>
                     </div>
                 </div>
                 <div class="award-card fade-up">
