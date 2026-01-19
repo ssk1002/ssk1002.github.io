@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Sahir Karani - Senior Software Engineer</title>
     <meta name="description" content="Senior Software Engineer at Amazon specializing in AI, full-stack development, and building scalable systems.">
     <meta name="keywords" content="Sahir Karani, Software Engineer, Amazon, AI, Machine Learning, Full Stack Developer">
@@ -48,6 +48,7 @@
 
         html {
             scroll-behavior: smooth;
+            min-width: 320px;
         }
 
         body {
@@ -56,6 +57,9 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            min-width: 320px;
+            margin: 0;
+            padding: 0;
         }
 
         h1, h2, h3, h4, h5 {
@@ -696,6 +700,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: visible;
+            cursor: pointer;
         }
 
         .athletic-card::before {
@@ -738,7 +743,8 @@
             object-fit: contain;
         }
 
-        .athletic-card:hover .hover-image {
+        .athletic-card:hover .hover-image,
+        .athletic-card.active .hover-image {
             opacity: 1;
             transform: translateX(-50%) scale(1) translateY(-10px);
         }
@@ -1598,7 +1604,7 @@
             <div class="section-header fade-up">
                 <span class="section-label">Beyond Code</span>
                 <h2 class="section-title">Miles & Mindset</h2>
-                <p class="section-tip">Hover over cards to see photos</p>
+                <p class="section-tip">Hover or tap cards to see photos</p>
             </div>
             <div class="athletic-grid">
                 <div class="athletic-card fade-up">
@@ -1895,6 +1901,27 @@
 
         document.querySelectorAll('.fade-up').forEach(el => {
             observer.observe(el);
+        });
+
+        // Mobile touch support for athletic cards
+        document.querySelectorAll('.athletic-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Remove active from all other cards
+                document.querySelectorAll('.athletic-card').forEach(c => {
+                    if (c !== this) c.classList.remove('active');
+                });
+                // Toggle active on clicked card
+                this.classList.toggle('active');
+            });
+        });
+
+        // Close active card when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.athletic-card')) {
+                document.querySelectorAll('.athletic-card').forEach(c => {
+                    c.classList.remove('active');
+                });
+            }
         });
     </script>
 </body>
